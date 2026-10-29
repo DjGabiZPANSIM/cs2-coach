@@ -1,0 +1,22 @@
+name: Testy CS2 Coach
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pobranie plikow projektu
+        uses: actions/checkout@v6
+
+      - name: Przygotowanie Pythona
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Uruchomienie testow
+        run: python -m unittest -v test_trening
